@@ -38,12 +38,12 @@ RUN apt-get update \
  && echo "Last command in RUN" \
  && apt-get clean \
 # && echo "WGET Master" \
-# && wget -N https://github.com/alundesap/module_headless/archive/master.zip -P ~/ \
+# && wget -N https://github.com/alundesap/module_subacct/archive/master.zip -P ~/ \
 # && unzip ~/master.zip -d ~/ \
  && echo "Done!"
 RUN echo "Git Clone" \
  && mkdir -p /root/app \
- && /usr/bin/git clone https://github.com/alundesap/module_headless.git /root/app \
+ && /usr/bin/git clone https://github.com/alundesap/module_subacct.git /root/app \
  && echo "export PATH=\$PATH:/usr/local/bin:/usr/local/sbin" >> /root/.bashrc \
  && echo "export PORT=8080" >> /root/.bashrc \
  && echo "Done!"

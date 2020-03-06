@@ -1,14 +1,14 @@
 # docker_opensuse
 
 ```
-cd /Users/i830671/git/docker_headless
+cd /Users/i830671/git/docker_subacct
 
-docker build -t alunde/headless:latest .
+docker build -t alunde/subacct:latest .
 docker login -u alunde
-docker push alunde/headless:latest
+docker push alunde/subacct:latest
 
 
-docker run -ti -p 2222:22 alunde/headless:latest
+docker run -ti -p 2222:22 alunde/subacct:latest
 
 ```
 Connect with:
@@ -18,18 +18,18 @@ ssh -p 2222 root@localhost
 
 First deploy:
 ```
-cf push concile_headless --docker-image alunde/headless -d conciletime.com -n headless -u none -k 1G -m 1G --no-start
-cf bs concile_headless HEADLESS_SS
-cf start concile_headless
-cf enable-ssh concile_headless
-cf restart concile_headless
-cf ssh concile_headless
+cf push concile_subacct --docker-image alunde/subacct -d conciletime.com -n subacct -u none -k 1G -m 1G --no-start
+cf bs concile_subacct SUBACCT_SS
+cf start concile_subacct
+cf enable-ssh concile_subacct
+cf restart concile_subacct
+cf ssh concile_subacct
 ```
 
 Subsequent deploies:
 ```
-cf push concile_headless --docker-image alunde/headless -d conciletime.com -n headless -u none -k 1G -m 1G
-cf ssh concile_headless
+cf push concile_subacct --docker-image alunde/subacct -d conciletime.com -n subacct -u none -k 1G -m 1G
+cf ssh concile_subacct
 ```
 root@6cdd85b0-26b9-42ed-5275-3301:~# lsof -n -i -P | grep LISTEN
 python3     6 root    3u  IPv4 315325015      0t0  TCP *:8080 (LISTEN)

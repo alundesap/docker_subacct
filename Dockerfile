@@ -25,11 +25,16 @@ RUN apt-get update \
  && mkdir /run/sshd \
  && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
  && echo "root:Nirvana8484" | chpasswd \
- && curl -Lo /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+# && curl -Lo /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+# Setting up google-chrome-stable (80.0.3987.132-1) // Caching this version on thedrop so that it version compatible with chromedriver
+ && curl -Lo /tmp/google-chrome-stable_current_amd64.deb http://thedrop.sap-a-team.com/files/google-chrome-stable_current_amd64.deb \
  && gdebi -n /tmp/google-chrome-stable_current_amd64.deb \
 # && dpkg -i /tmp/google-chrome-stable_current_amd64.deb \
 # && apt-get -f install \
- && wget -N http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip -P ~/ \
+# See https://chromedriver.chromium.org/downloads
+# && wget -N http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip -P ~/ \
+# && wget -N http://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip -P ~/ \
+ && wget -N http://thedrop.sap-a-team.com/files/chromedriver_linux64.zip -P ~/ \
  && unzip ~/chromedriver_linux64.zip -d ~/ \
  && rm ~/chromedriver_linux64.zip \
  && mv -f ~/chromedriver /usr/local/bin/chromedriver \
